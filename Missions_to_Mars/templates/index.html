@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<!--[if IE 7 ]><html class="ie ie7 lte9 lte8 lte7" lang="en-US"><![endif]-->
+<!--[if IE 8]><html class="ie ie8 lte9 lte8" lang="en-US">	<![endif]-->
+<!--[if IE 9]><html class="ie ie9 lte9" lang="en-US"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html class="noIE" lang="en-US">
+<!--<![endif]-->
+	<head>
+		<!-- meta -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale = 1.0, maximum-scale=1.0, user-scalable=no"/>
+		<title>Mars Info</title>
+		<link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap.min.css') }}">
+		<link rel="stylesheet" href="{{ url_for('static',filename='css/ionicons.min.css') }}">
+		<link rel="stylesheet" href="{{ url_for('static',filename='css/owl.carousel.css') }}">
+		<link rel="stylesheet" href="{{ url_for('static',filename='css/owl.theme.css') }}">
+	    <link rel="stylesheet" href="{{ url_for('static',filename='css/main.css') }}">
+	    <link rel="stylesheet" href="{{ url_for('static',filename='css/about.css') }}">
+	    <link rel="stylesheet" href="{{ url_for('static',filename='css/contact.css') }}">
+	    <link rel="stylesheet" href="{{ url_for('static',filename='css/service.css') }}">
+	    <link rel="stylesheet" href="{{ url_for('static',filename='css/one-page-style.css') }}">
+	    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+			<!--[if lt IE 9]>
+				<script src="assets/js/html5shiv.js"></script>
+				<script src="assets/js/respond.js"></script>
+			<![endif]-->
+
+			<!--[if IE 8]>
+		    	<script src="assets/js/selectivizr.js"></script>
+		    <![endif]-->
+	</head>
+<body data-spy="scroll" data-target="#bs-example-navbar-collapse-1">
+
+<!-- Home -->
+	<section class="header" id="header">
+		
+		<nav class="navbar navbar-default" id="navigation-bar">
+			<div class="container">
+			<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="index.html">Mars</a>
+				</div> <!-- /.navbar-header -->
+
+		    <!-- Collect the nav links, forms, and other content for toggling -->
+			    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="#header">home</a></li>
+						<li><a href="#scrape">Scrape</a></li>
+						<li><a href="#news">News</a></li>
+						<li><a href="#facts">Panda Facts</a></li>
+						<li><a href="#facts2">Dict Facts</a></li>
+						<li><a href="#gallery">Gallery</a></li>
+					</ul> <!-- /.nav -->
+			    </div><!-- /.navbar-collapse -->
+		  	</div><!-- /.container -->
+		</nav>
+		<div class="container">
+			<div class="header-table">
+				<div class="header-wrapper">
+					<h1 class="header-title">
+						All About Mars
+					</h1>
+				</div> <!-- /.header-wrapper -->
+			</div>
+		</div> <!-- /.container -->
+	</section> <!-- /#header -->
+
+
+<!-- Scrape -->
+	<section class="about" id="scrape">
+		<div class="container section-wrapper" style="text-align: center;">
+			<a class="btn btn-success" href="scrape">Scrape</a>
+			<!-- <div class="underline purple"></div>	 -->
+		</div> <!-- /.container -->
+	</section> <!-- /.about -->
+
+<!-- News -->
+	<section class="note" id="news">
+		<div class="container section-wrapper">
+			<h2 class="section-title black">
+				Latest News
+			</h2> <!-- /.section-title -->
+			<div class="underline purple"></div>
+			<div class="purple">
+				<div class="quoter">{{ mars_dict.news_title }} <span class="badge badge-pill badge-secondary">{{ mars_dict.news_date }}</span>
+				</div>
+				<hr class="white">
+				<p class="quote">
+					{{ mars_dict.news_briefing }}
+				</p> <!-- /.quote -->
+			</div>
+			
+		</div> <!-- /.container -->
+	</section> <!-- /.note -->
+	
+<!-- Facts by panda-->
+	<section class="fun" id="facts">
+		<div class="container section-wrapper">
+		<h2 class="section-title black">
+				Facts (by panda)
+			</h2> <!-- /.section-title -->
+			<div class="underline purple"></div>	
+			<div class="row">
+				<div class="col-sm-4"></div>
+				<div class="col-sm-4">
+				{{ mars_dict.facts_table|safe }}
+				</div>
+				<div class="col-sm-4"></div>
+				<!-- {% for k, v in mars_dict.facts.items() %}
+				<div class="col-sm-3 col-xs-6">
+					<div class="fun-box">
+						<div class="number">
+							{{ v }}
+						</div>
+						<div class="number-title">
+							{{ k }}
+						</div>
+					</div>
+				</div>
+				{% endfor %} -->
+			</div> <!-- /.row -->
+		</div> <!-- /.container -->
+	</section> <!-- /.fun -->
+
+<!-- Facts by dict -->
+	<section class="price-table" id="facts2">
+	<div class="container section-wrapper">
+		<h2 class="section-title black">
+			Facts (by dict)
+		</h2> <!-- /.section-title -->
+		<div class="underline purple"></div>
+		<div class="row">
+			<div class="col-sm-10 col-sm-offset-1">
+				<div class="row">
+					<div class="col-sm-2"></div>
+					<div class="col-sm-4">
+						<div class="price-title">
+							Description
+						</div>
+						<ul class="price-list">
+							{% for k,v in mars_dict.facts.items()%}
+								<li>{{ k }}</li>
+							{% endfor %}
+							<li></li>
+						</ul>
+					</div>
+
+					<div class="col-sm-4">
+						<div class="price-title">
+							Fact
+						</div>
+						<ul class="price-list">
+							{% for k,v in mars_dict.facts.items()%}
+								<li>{{ v }}</li>
+							{% endfor %}
+							<li></li>
+						</ul>
+					</div>
+
+				</div> <!-- /.row -->
+
+			</div>
+		</div> <!-- /.row -->
+	</div> <!-- /.container -->
+	</section> <!-- /.price-table -->
+
+<!-- Portfolio -->
+	<section class="portfolio" id="gallery">
+		<div class="container section-wrapper">
+			<h2 class="section-title black">
+				Gallery
+			</h2> <!-- /.section-title -->
+			<div class="underline purple"></div>
+			<div class="row">
+				{% for img in mars_dict.hemisphere_img %}
+				<div class="col-sm-3 col-xs-6">
+					<div class="portfolio-item">
+						<div class="portfolio-img">
+							<img src="{{ img.thumb }}" alt="port-1" class="port-item">
+						</div> <!-- /.portfolio-img -->
+						<div class="portfolio-item-details">
+							<div class="portfolio-item-name">
+								<a href="{{ img.img_url }}">{{ img.title }}</a>
+							</div> <!-- /.portfolio-item-name -->
+							<!-- <div class="port-heart">
+								<i class="ion-ios-heart-outline"></i> 564
+							</div> /.port-heart -->
+						</div> <!-- /.portfolio-item-details -->
+					</div> <!-- /.portfolio-item -->
+				</div>
+				{% endfor %}
+			</div> <!-- /.row -->
+		</div> <!-- /.container -->
+	</section> <!-- /.portfolio -->
+
+
+
+
+<!-- Footer -->
+	<footer>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-4">
+					<div class="copy">
+						Copyright &copy; 2021 Bootcamp Spot
+					</div>
+				</div>
+				<div class="col-sm-4 text-center">
+					<div class="social-icon">
+						<a href="#">
+							<div class="icon fb">
+								<i class="ion-social-facebook"></i>
+							</div>
+						</a>
+						<a href="#">
+							<div class="icon twitter">
+								<i class="ion-social-twitter"></i>
+							</div>
+						</a>
+						<a href="#">
+							<div class="icon google">
+								<i class="ion-social-googleplus"></i>
+							</div>
+						</a>
+						<a href="#">
+							<div class="icon rss">
+								<i class="ion-social-rss"></i>
+							</div>
+						</a>
+					</div>		
+				</div>
+				<div class="col-sm-4 text-right">
+					<div class="copy">
+						Theme by <a href="http://www.themewagon.com">themewagon.com</a>. All Rights Reserved
+					</div>
+				</div>
+			</div> <!-- /.row -->
+		</div> <!-- /.container -->
+	</footer>
+	
+	<script src="{{ url_for('static',filename='js/jquery-1.11.2.min.js') }}"></script>
+    <script src="{{ url_for('static',filename='js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static',filename='js/owl.carousel.min.js') }}"></script>
+    <script src="{{ url_for('static',filename='js/contact.js') }}"></script>
+	<script src="{{ url_for('static',filename='js/script.js') }}"></script>
+
+	<!-- <script src="assets/js/jquery-1.11.2.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/owl.carousel.min.js"></script>
+    <script src="assets/js/contact.js"></script>
+	<script src="assets/js/script.js"></script> -->
+
+</body>
+</html>
